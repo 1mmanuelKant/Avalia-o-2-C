@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+
+void saboresprecos()
+{
+	printf("Sabores disponíveis: \n\n");
+	char nome[6][20] = {"Frango\n","Calabresa\n","Portuguesa\n","Marguerita\n","Muçarela\n","Napolitana\n"};
+	int preco[6] = {21,20,19,18,19,18};
+	printf(" R$%d %s R$%d %s R$%d %s R$%d %s R$%d %s R$%d %s ",preco[0],nome[0],preco[1],nome[1],preco[2],nome[2],preco[3],nome[3],preco[4],nome[4],preco[5],nome[5]);
+}
+
+void bebidas()
+{
+	printf("Bebidas disponíveis: \n\n");
+	char bebida[3][2][40] = {"Refrigerante marca 1","Refrigerante marca 2","Refrigerante marca 3","Suco de maracujá","Suco de goiaba","Suco de manga\n"};
+	int precob[6] = {6,7,7,4,5,4};
+	printf("%s, %s, %s, %s, %s e %s ",bebida[0][0],bebida[0][1],bebida[1][0],bebida[1][1],bebida[2][0],bebida[2][1]);
+}
+
+void combos()
+{
+	int combo1 = 30;
+	int combo2 = 32;
+	char nome[6][20] = {"Frango\n","Calabresa\n","Portuguesa\n","Marguerita\n","Muçarela\n","Napolitana\n"};;
+	char bebida [3][2][40] = {"Refrigerante marca 1","Refrigerante marca 2","Refrigerante marca 3","Suco de maracujá","Suco de goiaba","Suco de manga"};;	
+	printf("Combo 1 - duas pizzas de %s com %s de 2L\n",nome[1],bebida[0] [1]);
+	printf("Combo 2 - uma pizza de %s com %s de 2L\n",nome[2],bebida[1] [0]);
+	
+}
+
+void pedido()
+{
+    int precof;
+	int i;
+	int combo1 = 32;
+	int combo2 = 30;
+	int combo;
+    int precob[6] = {6,7,7,4,5,4};
+	int preco[6] = {21,20,19,18,19,18};
+    printf("Digite 3 para pedir um combo\n");
+	scanf("%d",&i);
+		   	if(i != 3)
+	{
+	printf("Escolha a pizza(1 - Frango, 2 - Calabresa, 3 - Portuguesa, 4 - Marguerita, 5 - Muçarela, 6 - Napolitana\n");
+	scanf("%d",&preco[i]);
+	printf("Escolha a bebida(1 - Refrigerante marca 1, 2 - Refrigerante marca 2, 3 - Refrigerante marca 3, 4 - Suco de maracujá, 5 - Suco de goiaba, 6 - Suco de manga\n");
+	scanf("%d",&precob[i]);
+    precof = preco[5] + precob[5];
+    printf("O preço do seu pedido foi R$ %d ",precof);
+	}
+	else
+	{
+	printf("escolha o combo ");
+	scanf("%d",&combo);
+	
+	switch(combo)
+	{
+	case 1:
+		printf("O escolhido foi o combo 1 que custa R$ %d",combo1);
+		break;
+	case 2:
+	printf("O escolhido foi o combo 2 que custa R$ %d",combo2);
+		break;
+	default:
+		printf("Combo não disponível");
+		break;
+	}		
+	}
+}
+
+int main()
+{
+	struct pizza
+	{
+	int opcao;
+	int operacao;		
+	};
+	
+	int opcao;
+	printf("Pizzaria CC2020 - Gerenciamento\n\n");
+	printf("MENU:\n\n1- Consultar sabor e preço das pizzas\n2- Consultar combos\n3- Consultar bebidas\n4- Realizar pedido\n");
+	scanf("%d",&opcao);
+	
+	setlocale(LC_ALL,"Portuguese");
+	
+	switch(opcao)
+	{
+	case 1:
+		saboresprecos();
+		break;
+	case 2:
+	    combos();
+	    break;
+	case 3:
+		bebidas();
+		break;
+	case 4:
+		pedido();
+		break;
+	default:
+		printf("Opção não valida");
+		break;
+	}
+	return 0;
+}
